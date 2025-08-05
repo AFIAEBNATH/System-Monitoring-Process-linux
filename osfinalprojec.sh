@@ -167,7 +167,22 @@ get_bandwidth() {
 
 #  Public IP ==========
 get_public_ip() {
-  curl -s ifconfig.me || echo "Unavailable"
+  local ip_sources=(
+    "https://ifconfig.me"
+    "https://ipinfo.io/ip"
+    "https://icanhazip.com"
+    "https://api.ipify.org"
+  )
+  
+  for url in "${ip_sources[@]}"; do
+    ip=$(curl -s --max-time 5 "$url")
+    if [[ "$ip" =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+      echo "$ip"
+      return
+    fi
+  done
+  
+  echo "Unavailable"
 }
 
 #  Top Processes ==========
