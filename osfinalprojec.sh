@@ -107,7 +107,7 @@ send_alert() {
 # The rest of the script remains the same...
 #  Idle Notification ==========
 send_idle_notice() {
-  notify-send "🛌 System Idle" "All resource usage is low."
+  notify-send "System Idle" "All resource usage is low."
 }
 
 #  Network Checker ==========
