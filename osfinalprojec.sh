@@ -48,7 +48,7 @@ packages=(
   [msmtp]="msmtp"
 )
 
-echo -e "${CYAN}🔍 Checking dependencies...${NC}"
+echo -e "${CYAN} Checking dependencies...${NC}"
 for cmd in "${!packages[@]}"; do
   if ! command -v "$cmd" &>/dev/null; then
     pkg=${packages[$cmd]}
@@ -312,5 +312,5 @@ while true; do
 
   sleep "$INTERVAL"
   elapsed=$(( (current_time - start_time) / 60 ))
-  [ "$elapsed" -ge "$DURATION_MINUTES" ] && echo -e "\n🛑 Auto-stopping after $DURATION_MINUTES minutes." && break
+  [ "$elapsed" -ge "$DURATION_MINUTES" ] && echo -e "\n Auto-stopping after $DURATION_MINUTES minutes." && break
 done
